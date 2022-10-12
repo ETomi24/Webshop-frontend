@@ -102,5 +102,7 @@
       }
     }
   },
-  "defaultProject": "Webshop-frontend"
+  "cli": {
+    "analytics": false
+  }
 }
