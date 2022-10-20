@@ -19,8 +19,8 @@
     "@angular/platform-browser-dynamic": "^14.2.6",
     "@angular/router": "^14.2.6",
     "@ng-bootstrap/ng-bootstrap": "^13.1.0",
-    "@popperjs/core": "^2.10.2",
-    "bootstrap": "^5.2.0",
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
