@@ -1,0 +1,10 @@
+.background {
+    height: 100vh;
+    background : linear-gradient(to top, #dff5f1 50%, #3a66e8 95%);
+}
+
+.panel {
+    margin-top: 170px;
+    margin-left: auto;
+    margin-right: auto;
+}
