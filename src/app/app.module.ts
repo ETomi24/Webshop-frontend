@@ -4,16 +4,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { LoginPageComponent } from './login-page/login-page.component';
-import { RegistrationPageComponent } from './registration-page/registration-page.component';
-import { AdminListPageComponent } from './admin-list-page/admin-list-page.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
+import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
+import { AdminListPageComponent } from './components/admin-list-page/admin-list-page.component';
+import { ProductCreateComponent } from './components/product-create/product-create.component';
+import { ProductListComponent } from './components/product-list/product-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
     RegistrationPageComponent,
-    AdminListPageComponent
+    AdminListPageComponent,
+    ProductCreateComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,
