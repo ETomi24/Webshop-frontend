@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Product } from 'src/app/models/product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-admin-list-page',
@@ -7,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminListPageComponent implements OnInit {
 
-  constructor() { }
+  products : Product[] = [];
+
+  constructor(private productService : ProductService) { }
 
   ngOnInit(): void {
   }
