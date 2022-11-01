@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -15,6 +14,12 @@ export class AdminListPageComponent implements OnInit {
   constructor(private productService : ProductService) { }
 
   ngOnInit(): void {
+    this.getProducts();
+  }
+
+  getProducts() {
+    this.productService.getAll().subscribe(result => this.products = result);
+    console.log(this.products)
   }
 
 }

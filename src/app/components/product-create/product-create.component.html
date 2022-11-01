@@ -1,1 +1,47 @@
-<p>product-create works!</p>
+
+<div class="container">
+    <h1>Product Create</h1>
+    <form method="post">
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="mb-3">
+                    <label for="picture" class="form-label">Picture</label>
+                    <input class="form-control" type="file" id="picture" (change)="onFileChanged($event)">
+                </div>
+
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input class="form-control" type="text" id="name" [(ngModel)]="name" name="name">
+                </div>
+
+                <label for="price" class="form-label">Price</label>
+                <div class="input-group mb-3">
+                    <input class="form-control" type="number" id="price" [(ngModel)]="price" name="price">
+                    <span class="input-group-text">$</span>
+                </div>
+
+                <div class="mb-3">
+                    <label for="quantity" class="form-label">Quantity</label>
+                    <input class="form-control" type="number" id="quantity" [(ngModel)]="quantity" name="quantity">
+                </div>
+
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category</label>
+                    <select class="form-select" type="text" aria-label="Default select example" [(ngModel)]="categoryId" name="category">
+                        <option *ngFor="let category of categories" [value]=category.name >{{category.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="row">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" id="description" rows="13" [(ngModel)]="description" name="description"></textarea>
+                </div>
+                <div class="row mt-3">
+                    <button type="submit" class="btn btn-primary" (click)="createProduct()">Create</button>
+                    <button class="btn btn-secondary mt-1" routerLink="/admin-list">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

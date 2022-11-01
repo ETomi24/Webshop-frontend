@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { LoginPageComponent } from './components/login-page/login-page.component';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
@@ -25,6 +26,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [],

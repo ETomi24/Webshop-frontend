@@ -11,26 +11,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Iphone 12</td>
-                <td>Phone</td>
-                <td>2</td>
-                <td>2000 $</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Iphone 13</td>
-                <td>Phone</td>
-                <td>2</td>
-                <td>2000 $</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Iphone 14</td>
-                <td>Phone</td>
-                <td>2</td>
-                <td>2000 $</td>
+            <tr *ngFor="let product of (products)">
+                <th scope="row">{{product.id}}</th>
+                <td>{{product.name}}</td>
+                <td>{{product.categoryId}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.price}} $</td>
             </tr>
         </tbody>
     </table>
