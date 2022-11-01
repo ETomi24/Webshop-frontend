@@ -45,7 +45,7 @@ export class ProductCreateComponent implements OnInit {
       quantity: this.quantity,
       name: this.name,
       categoryId: this.categoryId,
-      pictureUrl: this.selectedFile?.name
+      picture: this.selectedFile?.name
     }
     console.log(this.productCreateRequest)
     this.productService.create(this.productCreateRequest).subscribe(res => console.log(res))
