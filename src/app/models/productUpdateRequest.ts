@@ -1,4 +1,4 @@
-export interface Product{
+export interface ProductUpdateRequest{
     id? : number;
     description? : string;
     price? : number;

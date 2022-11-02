@@ -12,6 +12,9 @@ import { RegistrationPageComponent } from './components/registration-page/regist
 import { AdminListPageComponent } from './components/admin-list-page/admin-list-page.component';
 import { ProductCreateComponent } from './components/product-create/product-create.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
+import { ProductEditComponent } from './components/product-edit/product-edit.component';
+import { ProductDetailComponent } from './components/product-detail/product-detail.component';
+import { CartPageComponent } from './components/cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { ProductListComponent } from './components/product-list/product-list.com
     RegistrationPageComponent,
     AdminListPageComponent,
     ProductCreateComponent,
-    ProductListComponent
+    ProductListComponent,
+    ProductEditComponent,
+    ProductDetailComponent,
+    CartPageComponent
   ],
   imports: [
     BrowserModule,

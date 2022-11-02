@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs/internal/Observable';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -9,16 +11,18 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class AdminListPageComponent implements OnInit {
 
-  products : Product[] = [];
+  products? : Observable<Product[]>;
 
-  constructor(private productService : ProductService) { }
+  constructor(private productService : ProductService, private router : Router) {
+    this.getProducts();
+  }
 
   ngOnInit(): void {
     this.getProducts();
   }
 
   getProducts() {
-    this.productService.getAll().subscribe(result => this.products = result);
+    this.products = this.productService.getAll();
     console.log(this.products)
   }
 
