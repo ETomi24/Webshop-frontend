@@ -21,4 +21,12 @@ export class ProductListComponent implements OnInit {
     this.productService.getAll().subscribe(res => this.products = res)
   }
 
+  getImage(product : Product) : any {
+    if(product.picture) {
+      return 'data:image/jpeg;base64,' + product.picture;
+    } else {
+      return 'https://via.placeholder.com/340x255';
+    }
+  }
+
 }

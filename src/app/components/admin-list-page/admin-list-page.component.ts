@@ -11,9 +11,10 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class AdminListPageComponent implements OnInit {
 
-  products? : Observable<Product[]>;
+  products?: Observable<Product[]>;
+  deleteId?: number;
 
-  constructor(private productService : ProductService, private router : Router) {
+  constructor(private productService: ProductService, private router: Router) {
     this.getProducts();
   }
 
@@ -26,4 +27,17 @@ export class AdminListPageComponent implements OnInit {
     console.log(this.products)
   }
 
+  delete() {
+    if (this.deleteId) {
+      this.productService.delete(this.deleteId).subscribe(res => {
+        console.log(res);        
+      })     
+    }
+    window.location.reload();
+    this.deleteId = undefined;
+  }
+
+  selectDeleteId(id?: number) {
+    this.deleteId = id;
+  }
 }

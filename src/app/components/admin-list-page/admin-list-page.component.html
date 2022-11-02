@@ -20,7 +20,7 @@
                 <td>{{product.price}} $</td>
                 <td>
                     <button class="btn btn btn-primary me-2" [routerLink]="['/product-edit', product.id]">Edit</button>
-                    <button class="btn btn btn-danger ms-2" data-bs-toggle="modal"
+                    <button class="btn btn btn-danger ms-2" data-bs-toggle="modal" (click)="selectDeleteId(product.id)"
                         data-bs-target="#confirmDelete">Delete</button>
                 </td>
             </tr>
@@ -44,7 +44,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Confirm Delete</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="delete()">Confirm Delete</button>
             </div>
         </div>
     </div>

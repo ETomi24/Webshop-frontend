@@ -54,7 +54,7 @@ export class ProductEditComponent implements OnInit {
         this.quantity = this.product.quantity;
         this.name = this.product.name;
         this.categoryId = this.product.categoryId;
-        this.base64Data = undefined;
+        this.base64Data = 'data:image/jpeg;base64,' + this.product.picture;
       }
     });
   }
@@ -87,5 +87,12 @@ export class ProductEditComponent implements OnInit {
       reader.readAsDataURL(this.selectedFile);
     }
   }
+
+  navigateBack() {
+    this.router.navigate(['/admin-list']).then(() => {
+    window.location.reload();
+  });
+  }
+
 
 }

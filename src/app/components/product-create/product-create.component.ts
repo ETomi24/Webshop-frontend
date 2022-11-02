@@ -60,4 +60,10 @@ export class ProductCreateComponent implements OnInit {
       reader.readAsDataURL(this.selectedFile);
     }
   }
+
+  navigateBack() {
+    this.router.navigate(['/admin-list']).then(() => {
+    window.location.reload();
+  });
+  }
 }
