@@ -22,7 +22,7 @@ export class ProductEditComponent implements OnInit {
   price?: number;
   quantity?: number;
   name?: string;
-  categoryId?: string;
+  category?: string;
 
   base64Data: any;
   selectedFile?: File;
@@ -53,7 +53,7 @@ export class ProductEditComponent implements OnInit {
         this.price = this.product.price;
         this.quantity = this.product.quantity;
         this.name = this.product.name;
-        this.categoryId = this.product.categoryId;
+        this.category = this.product.category?.name;
         this.base64Data = 'data:image/jpeg;base64,' + this.product.picture;
       }
     });
@@ -66,12 +66,12 @@ export class ProductEditComponent implements OnInit {
       price: this.price,
       quantity: this.quantity,
       name: this.name,
-      categoryId: this.categoryId,
+      category: this.category,
       picture: this.base64Data
     }
     console.log(this.productUpdateRequest)
     this.productService.update(this.id, this.productUpdateRequest).subscribe(res => console.log(res))
-    this.router.navigate(["/admin-list"]);
+    this.navigateBack();
   }
 
 
@@ -90,8 +90,8 @@ export class ProductEditComponent implements OnInit {
 
   navigateBack() {
     this.router.navigate(['/admin-list']).then(() => {
-    window.location.reload();
-  });
+      window.location.reload();
+    });
   }
 
 

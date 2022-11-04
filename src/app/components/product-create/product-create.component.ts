@@ -19,7 +19,7 @@ export class ProductCreateComponent implements OnInit {
   price?: number;
   quantity?: number;
   name?: string;
-  categoryId?: string;
+  category?: string;
 
   base64Data: any;
   selectedFile?: File;
@@ -40,12 +40,12 @@ export class ProductCreateComponent implements OnInit {
       price: this.price,
       quantity: this.quantity,
       name: this.name,
-      categoryId: this.categoryId,
+      category: this.category,
       picture: this.base64Data
     }
     console.log(this.productCreateRequest)
     this.productService.create(this.productCreateRequest).subscribe(res => console.log(res))
-    this.router.navigate(["/admin-list"]);
+    this.navigateBack();
   }
 
   public onFileChanged(event: any) {

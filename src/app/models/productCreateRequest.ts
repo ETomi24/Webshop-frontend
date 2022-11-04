@@ -3,6 +3,6 @@ export interface ProductCreateRequest{
     price? : number;
     quantity? : number;
     name? : string;
-    categoryId? : string;
+    category? : string;
     picture? : string;
 }

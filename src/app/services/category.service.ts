@@ -13,4 +13,20 @@ export class CategoryService {
   getAll() {
     return this.http.get<Category[]>(this.urlStart + "all");
   }
+
+  get(name : string) {
+    return this.http.get<Category>(this.urlStart + name);
+  }
+
+  delete(name : string) {
+    return this.http.delete<string>(this.urlStart + "delete/" + name)
+  }
+
+  create(name : string) {
+    return this.http.post<string>(this.urlStart + "create", name);
+  }
+
+  update(id : number) {
+    
+  }
 }

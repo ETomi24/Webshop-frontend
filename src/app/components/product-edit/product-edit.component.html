@@ -21,9 +21,9 @@
 
                 <div class="mb-3">
                     <label for="category" class="form-label">Category</label>
-                    <select class="form-select" type="text" aria-label="Default select example" [(ngModel)]="categoryId"
+                    <select class="form-select" type="text" aria-label="Default select example" [(ngModel)]="category"
                         name="category">
-                        <option *ngFor="let category of categories" [value]=category.name>{{category.name}}</option>
+                        <option *ngFor="let category of categories" [value]="category.name">{{category.name}}</option>
                     </select>
                 </div>
 

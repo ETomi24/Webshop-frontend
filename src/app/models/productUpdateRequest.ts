@@ -4,6 +4,6 @@ export interface ProductUpdateRequest{
     price? : number;
     quantity? : number;
     name? : string;
-    categoryId? : string;
+    category? : string;
     picture? : string;
 }
