@@ -1,5 +1,4 @@
-.content{
-    margin-top: 150px;
-    margin-left: auto;
-    margin-right: auto;
+.table-responsive {
+    height: 600px;
+    overflow-y: auto
 }

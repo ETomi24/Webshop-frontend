@@ -17,20 +17,22 @@ export class AdminListPageComponent implements OnInit {
   selectedProductId?: number;
 
   categories?: Category[];
-  selectedCategory? : string;
+  selectedCategoryId? : number;
 
   constructor(private productService: ProductService,private categoryService : CategoryService, private router: Router) {
-    this.getProducts
+    this.getProducts();
+    this.getCategories();
   }
 
   ngOnInit(): void {
     this.getProducts();
+    this.getCategories();
   }
 
   getProducts() {
     this.productService.getAll().subscribe(res =>
       {
-        console.log(res);
+        //console.log(res);
         this.products = res;
       }
     );
@@ -56,20 +58,20 @@ export class AdminListPageComponent implements OnInit {
   }
 
   deleteCategory() {
-    if (this.selectedCategory) {
-      this.categoryService.delete(this.selectedCategory).subscribe(res => {
-        console.log(res);        
+    if (this.selectedCategoryId) {
+      this.categoryService.delete(this.selectedCategoryId).subscribe(res => {
+        console.log(res);              
       })     
     }
-    window.location.reload();
-    this.selectedCategory = undefined;
+    window.location.reload(); 
+    this.selectedCategoryId = undefined;
   }
 
   selectProductId(id?: number) {
     this.selectedProductId = id;
   }
 
-  selectCategory(name? : string) {
-    this.selectedCategory = name;
+  selectCategoryId(id? : number) {
+    this.selectedCategoryId = id;
   }
 }
