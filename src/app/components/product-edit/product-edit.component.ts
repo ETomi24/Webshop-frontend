@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Category } from 'src/app/models/category';
-import { Product } from 'src/app/models/product';
-import { ProductUpdateRequest } from 'src/app/models/productUpdateRequest';
+import { Category } from 'src/app/models/category/category';
+import { Product } from 'src/app/models/product/product';
+import { ProductUpdateRequest } from 'src/app/models/product/productUpdateRequest';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 
