@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Category } from '../models/category';
-import { CategoryCreateRequest } from '../models/categoryCreateRequest';
-import { CategoryUpdateRequest } from '../models/categoryUpdateRequest';
+import { Category } from '../models/category/category';
+import { CategoryCreateRequest } from '../models/category/categoryCreateRequest';
+import { CategoryUpdateRequest } from '../models/category/categoryUpdateRequest';
 
 @Injectable({
   providedIn: 'root'

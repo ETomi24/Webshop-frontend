@@ -1,27 +1,28 @@
 <div class="container mt-4">
-    <div class="row">
-        <div class="col-lg-2">
+    <h1>{{product?.name}}</h1>
+    <div class="row mt-4">
+        <div class="col-md-4">
             <img [src]="getImage()" class="img-fluid">
         </div>
-        <div class="col-lg-8">
-            <h2>{{product?.name}}</h2>
-            <p>{{product?.category.name}</p>
-            <p>Description : </p>
-            <p>{{product?.description}}</p>
+        <div class="col-lg-8 mt-2">
+            <p>Category : {{product?.category?.name}}</p>
+            <p>Description :{{product?.description}} </p>
+            <p>{{product?.price}} $</p>
 
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col">
                     <button type="button" class="btn btn-primary minus" (click)="quantity = quantity-1">-</button>
                 </div>            
-                <div class="col-1">
+                <div class="col">
                     {{quantity}}
+                    <button type="button" class="btn btn-primary" (click)="putInCart()">Put in cart</button>
                 </div>    
                 <div class="col">
                     <button type="button" class="btn btn-primary plus" (click)="quantity = quantity+1">+</button>
                 </div>               
             </div>
             <div>
-                <button type="button" class="btn btn-primary" (click)="putInCart()">Put in cart</button>
+                
             </div>
         </div>
     </div>

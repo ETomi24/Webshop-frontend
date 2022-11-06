@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Category } from 'src/app/models/category';
-import { ProductCreateRequest } from 'src/app/models/productCreateRequest';
+import { ProductCreateRequest } from 'src/app/models/product/productCreateRequest';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 

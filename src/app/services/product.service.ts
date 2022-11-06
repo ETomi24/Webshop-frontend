@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Product } from '../models/product';
-import { ProductCreateRequest } from '../models/productCreateRequest';
-import { ProductUpdateRequest } from '../models/productUpdateRequest';
+import { Product } from '../models/product/product';
+import { ProductCreateRequest } from '../models/product/productCreateRequest';
+import { ProductUpdateRequest } from '../models/product/productUpdateRequest';
 
 @Injectable({
   providedIn: 'root'
