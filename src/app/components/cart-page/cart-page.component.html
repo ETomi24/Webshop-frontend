@@ -1,1 +1,17 @@
-<p>cart-page works!</p>
+<ng-component *ngIf="cartItems">
+    <div>
+        <div class="card">
+            <div class="card-header">
+                
+            </div>
+        </div>
+    </div>
+</ng-component>
+
+<ng-component *ngIf="!cartItems">
+    <div>
+        <div class="card">
+
+        </div>
+    </div>
+</ng-component>
