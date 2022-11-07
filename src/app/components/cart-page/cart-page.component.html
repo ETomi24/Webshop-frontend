@@ -1,17 +1,39 @@
-<ng-component *ngIf="cartItems">
-    <div>
-        <div class="card">
-            <div class="card-header">
-                
+<ng-container *ngIf="products.length > 0">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    Your Cart
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered">
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col"></th>
+                        </table>
+                    </div>
+    
+                </div>
             </div>
         </div>
     </div>
-</ng-component>
+</ng-container>
 
-<ng-component *ngIf="!cartItems">
-    <div>
-        <div class="card">
-
+<ng-container *ngIf="products.length == 0">
+    <div class="row">
+        <div class="col">
+            <div class="card empty">
+                <div class="card-header">
+                    Your Cart
+                </div>
+                <div>
+                    <h1>Your cart is empty :(</h1>
+                </div>
+            </div>
         </div>
     </div>
-</ng-component>
+</ng-container>

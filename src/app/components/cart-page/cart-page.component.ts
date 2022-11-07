@@ -23,6 +23,15 @@ export class CartPageComponent implements OnInit {
   private productService : ProductService, private router : Router) { }
 
   ngOnInit(): void {
+    this.order = {
+      id : 1,
+      totalPrice : 1,
+      creationDate : new Date(),
+      deliveryDate : new Date,
+      status : 0,
+      userId : "etomi24"
+    }
+    this.getAllCartItem();
   }
 
   getAllCartItem() {
@@ -32,7 +41,7 @@ export class CartPageComponent implements OnInit {
         console.log(this.cartItems);
         this.cartItems.forEach(element => {
           this.productService.get(element.productId).subscribe(prod => {
-            this.products.push(prod)
+            this.products.push(prod);
           })
         });
       });
