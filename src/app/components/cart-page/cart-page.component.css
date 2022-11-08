@@ -1,22 +1,21 @@
 .table-responsive {
-    height: 600px;
-    overflow-y: auto
+    height: 450px;
+    overflow: auto;
 }
 
 .card {
-    width: 50%;
-    margin: 100px;
-    margin-left: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 700px;
+    margin-top: 60px;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding: 30px;
 }
 
 .empty{
-    width: 50%;
-    margin-top: 250px;
-    margin-left: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 200px;
+    margin: auto;
+    margin-top: 220px;
+    width: 400px;
+    padding: 25px;
+    text-align: center;
 }

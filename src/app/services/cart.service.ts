@@ -11,14 +11,14 @@ export class CartService {
   constructor(private http : HttpClient) { }
 
   getAll(orderId : number) {
-    return this.http.get<Cart[]>(this.urlStart + "all/", );
+    return this.http.get<Cart[]>(this.urlStart + "all/" + orderId);
   }
 
   addToCart(productId : number, orderId : number, amount : number) {
-    return this.http.post(this.urlStart + "add/" + orderId + productId, amount);
+    return this.http.post(this.urlStart + "add/" + orderId + "/" + productId, amount);
   }
 
   removeFromCart(productId : number, orderId : number, amount : number) {
-    return this.http.post(this.urlStart + "remove/" + orderId + productId, amount);
+    return this.http.post(this.urlStart + "remove/" + orderId + "/" + productId, amount);
   }
 }

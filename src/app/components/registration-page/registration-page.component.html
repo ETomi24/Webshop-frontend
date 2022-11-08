@@ -4,34 +4,34 @@
             <div class="card-header text-center">
                 Registration
             </div>
-            <form>
+            <form method="post">
                 <div class="card-body">
                     <div class = "row">
                         <div class ="col">
                             <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username">
+                            <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username" required>
                         </div>
                     </div>
                     <div class = "row">
                         <div class ="col">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email">
+                            <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email" required>
                         </div>
                     </div>
                     <div class = "row">
                         <div class ="col">
                             <label for="phone" class="form-label">Phone</label>
-                            <input type="tel" class="form-control" id="phone">
+                            <input type="tel" class="form-control" id="phone" [(ngModel)]="phone" name="phone" required>
                         </div>
                     </div>
                     <div class = "row">
                         <div class ="col">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password">
+                            <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password" required>
                         </div>
                     </div>
                     <div class="mx-auto mt-4">
-                        <button class="btn btn-primary btn-block w-100">Registration</button>
+                        <button class="btn btn-primary btn-block w-100" (click)="register()">Registration</button>
                     </div>
                 </div>
             </form>

@@ -8,6 +8,6 @@ export interface Order {
 }
 
 export enum Status{
-    In_Progress = 0,
-    Finished = 1,
+    IN_PROGRESS = 0,
+    FINISHED = 1,
 }

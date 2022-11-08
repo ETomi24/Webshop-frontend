@@ -1,37 +1,66 @@
-<ng-container *ngIf="products.length > 0">
-    <div class="row">
-        <div class="col">
-            <div class="card">
-                <div class="card-header">
-                    Your Cart
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered">
-                            <th scope="col">Id</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Category</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Price</th>
-                            <th scope="col"></th>
-                        </table>
+<ng-container *ngIf="cartItems.length > 0">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-title">
+                        <h1>Your cart</h1>
                     </div>
-    
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered">
+                                <thead>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">TotalPrice</th>
+                                    <th scope="col"></th>
+                                </thead>
+
+                                <tbody>
+                                    <tr *ngFor="let cartItem of (cartItems)">
+                                        <td>{{cartItem.product.name}}</td>
+                                        <td>{{cartItem.product.category?.name}}</td>
+                                        <td>{{cartItem.quantity}}</td>
+                                        <td>{{getCartItemTotalPrice(cartItem)}} $</td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary me-2"
+                                                [routerLink]="['/product-detail', cartItem.product.id]">Detail</button>
+                                            <button type="button" class="btn btn-danger"
+                                                (click)="removeFromCart(cartItem)">Delete</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-primary mt-1" (click)="completeOrder()">
+                                Complete Order
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        If you want to buy more product <a [routerLink]="['/product-list']">shop here</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </ng-container>
 
-<ng-container *ngIf="products.length == 0">
+
+<ng-container *ngIf="cartItems.length == 0">
     <div class="row">
         <div class="col">
             <div class="card empty">
-                <div class="card-header">
-                    Your Cart
+                <div class="card-title">
+                    <h1>Your cart</h1>
                 </div>
                 <div>
-                    <h1>Your cart is empty :(</h1>
+                    <h5>Your cart is empty :(</h5>
+                    <h6>Shop here</h6>
+                    <button type="button" class="btn btn-primary me-2" [routerLink]="['/product-list']">Shop</button>
                 </div>
             </div>
         </div>

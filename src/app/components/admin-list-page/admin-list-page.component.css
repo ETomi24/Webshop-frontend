@@ -2,3 +2,8 @@
     height: 600px;
     overflow-y: auto
 }
+
+.headline {
+    text-align: center;
+    margin: 25px;
+}
