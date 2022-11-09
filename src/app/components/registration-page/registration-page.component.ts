@@ -13,6 +13,7 @@ export class RegistrationPageComponent implements OnInit {
   password? : string;
   phone? : string;
   email? : string;
+  address? : string;
 
   userRegistrationRequest? : UserRegistrationRequest;
 
@@ -22,11 +23,12 @@ export class RegistrationPageComponent implements OnInit {
   }
 
   register() {
-    if (this.username && this.password && this.phone && this.email) {
+    if (this.username && this.password && this.phone && this.email && this.address) {
       this.userRegistrationRequest = {
         username : this.username,
         password : this.password,
         phoneNumber : this.phone,
+        address  : this.address,
         email : this.email,
         role : 0
       };

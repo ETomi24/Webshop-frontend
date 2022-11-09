@@ -5,5 +5,6 @@ export interface UserRegistrationRequest{
     email : string,
     phoneNumber : string,
     password : string,
+    address : string,
     role : Role
 }
