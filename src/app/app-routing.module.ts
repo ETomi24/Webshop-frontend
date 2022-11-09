@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminListPageComponent } from './components/admin-list-page/admin-list-page.component';
 import { CartPageComponent } from './components/cart-page/cart-page.component';
@@ -10,6 +10,7 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 const routes: Routes = [
   { path: 'admin-list', component: AdminListPageComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'product-list', component: ProductListComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'registration', component: RegistrationPageComponent },
+  { path: 'profile' , component: UserProfileComponent},
   { path: '', component: LoginPageComponent}
 ];
 

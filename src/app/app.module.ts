@@ -17,6 +17,9 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { CartPageComponent } from './components/cart-page/cart-page.component';
 import { CategoryCreateComponent } from './components/category-create/category-create.component';
 import { CategoryEditComponent } from './components/category-edit/category-edit.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { CategoryEditComponent } from './components/category-edit/category-edit.
     ProductDetailComponent,
     CartPageComponent,
     CategoryCreateComponent,
-    CategoryEditComponent
+    CategoryEditComponent,
+    UserProfileComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +44,7 @@ import { CategoryEditComponent } from './components/category-edit/category-edit.
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [AuthInterceptor],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

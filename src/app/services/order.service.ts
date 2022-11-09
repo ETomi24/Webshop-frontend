@@ -32,6 +32,10 @@ export class OrderService {
     return this.http.post(this.urlStart + "update", orderUpdateRequest);
   }
 
+  complete(id : number) {
+    return this.http.post(this.urlStart + "complete/" + id, {});
+  }
+
 
 
 

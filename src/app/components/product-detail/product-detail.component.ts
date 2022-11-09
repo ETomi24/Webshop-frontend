@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/product/product';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-product-detail',
@@ -13,7 +14,8 @@ export class ProductDetailComponent implements OnInit {
   product? : Product;
   quantity : number = 0;
 
-  constructor(private productService: ProductService,private cartService : CartService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private productService: ProductService,private cartService : CartService, private route: ActivatedRoute, private router: Router,
+    private storageService : StorageService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -39,6 +41,24 @@ export class ProductDetailComponent implements OnInit {
   }
 
   putInCart() {
-    
+    if(this.product?.quantity && this.product?.price && this.product?.id){
+      if(this.quantity >= 0 && this.quantity <= this.product?.quantity) {
+        let orderId = this.storageService.getOrderId();
+        this.cartService.addToCart(this.product.id, Number(orderId), this.quantity).subscribe(
+          res => {
+            console.log(res);
+          }
+        );
+        window.location.reload();
+      }
+    }
+  }
+
+  totalPrice() : any {
+    if(this.product?.quantity && this.product?.price){
+      if(this.quantity >= 0 && this.quantity <= this.product?.quantity) {
+        return this.quantity * this.product.price;
+      }
+    }
   }
 }

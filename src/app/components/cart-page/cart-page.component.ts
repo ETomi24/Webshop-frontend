@@ -7,6 +7,7 @@ import { Product } from 'src/app/models/product/product';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
 import { ProductService } from 'src/app/services/product.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-cart-page',
@@ -21,18 +22,20 @@ export class CartPageComponent implements OnInit {
   cartItems : CartItem[] = [];
 
   constructor(private cartService : CartService, private orderService : OrderService, 
-  private productService : ProductService, private router : Router) { }
+  private productService : ProductService, private router : Router, private storageService : StorageService) { }
 
   ngOnInit(): void {
-    this.order = {
-      id : 152,
-      totalPrice : 1,
-      creationDate : new Date(),
-      deliveryDate : new Date,
-      status : 0,
-      userId : "etomi24"
-    }
-    this.getAllCartItem();
+    this.getOrder();
+  }
+
+  getOrder() {
+    let orderId = this.storageService.getOrderId();
+    this.orderService.get(orderId).subscribe({
+      next: data =>{
+        this.order = data;
+        this.getAllCartItem();
+      }
+    });
   }
 
   getAllCartItem() {
@@ -56,8 +59,11 @@ export class CartPageComponent implements OnInit {
 
   removeFromCart(cartItem : CartItem) {
     if(this.order && cartItem.product.id){
-      this.cartService.removeFromCart(cartItem.product.id, this.order.id, cartItem.quantity).subscribe(res => console.log(res))
-      //window.location.reload();
+      this.cartService.removeFromCart(cartItem.product.id, this.order.id, cartItem.quantity).subscribe({
+        next: data => {
+          window.location.reload();
+        }
+      })
     }
   }
 
@@ -70,6 +76,24 @@ export class CartPageComponent implements OnInit {
   }
 
   completeOrder() {
-    
+    if(this.order){
+      this.orderService.complete(this.order.id).subscribe({
+        next: data =>{
+          //this.router.navigate(['/product-list']);
+          let username = this.storageService.getUsername()
+          this.orderService.create({userId : username}).subscribe({
+            next : data => {
+              this.orderService.getInProgressOrder(username).subscribe(
+                res => {                  
+                  console.log(res);
+                  this.storageService.saveOrderId(res.id);
+                  window.location.reload();
+                }
+              )
+            }
+          });
+        }
+      });
+    }
   }
 }

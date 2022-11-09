@@ -4,22 +4,25 @@
             <div class="card-header text-center">
                 Login
             </div>
-            <form>
+            <form method="post">
                 <div class="card-body">
                     <div class = "row">
                         <div class ="col">
                             <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control" id="username">
+                            <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username">
                         </div>
                     </div>
                     <div class = "row">
                         <div class ="col">
                             <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="password">
+                            <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password">
                         </div>
                     </div>
+                    <div *ngIf="isLoginFailed" class="alert alert-danger mt-1" role="alert">
+                        Login failed
+                    </div>
                     <div class="mx-auto mt-4">
-                        <button class="btn btn-primary btn-block w-100">Login</button>
+                        <button type="submit" class="btn btn-primary btn-block w-100" (click)="login()">Login</button>
                         <a [routerLink]="['/registration']">Don't have an account - Register</a>
                     </div>
                 </div>

@@ -1,3 +1,3 @@
 export interface OrderCreateRequest{
-    name : string;
+    userId : string;
 }

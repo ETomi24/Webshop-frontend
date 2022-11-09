@@ -1,4 +1,16 @@
 .img-fluid{
-    width: 350px;
-    height: 300px;
+    width: 450px;
+    height: 450px;
+}
+
+.card {
+    margin-top: 60px;
+    margin-left: 100px;
+    margin-right: 40px;
+    padding: 5px;
+}
+
+.card-text {
+    margin: 0;
+    text-overflow: clip;
 }

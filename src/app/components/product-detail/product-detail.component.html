@@ -1,30 +1,29 @@
 <div class="container mt-4">
-    <h1>{{product?.name}}</h1>
-    <div class="row mt-4">
-        <div class="col-md-4">
-            <img [src]="getImage()" class="img-fluid">
-        </div>
-        <div class="col-lg-8 mt-2">
-            <p>Category : {{product?.category?.name}}</p>
-            <p>Description :{{product?.description}} </p>
-            <p>{{product?.price}} $</p>
-
-            <div class="row mt-4">
-                <div class="col">
-                    <button type="button" class="btn btn-primary minus" (click)="quantity = quantity-1">-</button>
-                </div>            
-                <div class="col">
-                    {{quantity}}
-                    <button type="button" class="btn btn-primary" (click)="putInCart()">Put in cart</button>
-                </div>    
-                <div class="col">
-                    <button type="button" class="btn btn-primary plus" (click)="quantity = quantity+1">+</button>
-                </div>               
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img [src]="getImage()" class="img-fluid rounded-start" alt="...">
             </div>
-            <div>
-                
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="card-title">{{product?.name}}</h3>
+                    <h5 class="card-subtitle">{{product?.category?.name}}</h5>
+                    <p class="card-text mt-4 fs-5">Description :</p>
+                    <p class="card-text">{{product?.description}}</p>
+                    <p class="card-text mt-4 fs-5">In Stock : {{product?.quantity}}</p>
+                    <p class="card-text fs-5"><small class="text-muted">{{product?.price}} $</small></p>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <div class="btn-group mt-4" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-danger me-1 rounded-circle" (click)="quantity = quantity - 1" [disabled]="quantity == 0">-</button>
+                    <span class="fs-4">{{quantity}}</span>
+                    <button type="button" class="btn btn-success ms-1 rounded-circle" (click)="quantity = quantity + 1" [disabled]="quantity == product?.quantity">+</button>
+                    <span class="total fs-4 ms-1">Total Price will be : {{totalPrice()}} $</span>
+                </div>
+                <button type="button" class="btn btn-primary ms-1 mt-4 fs-5" (click)="putInCart()">Put in cart</button>  
             </div>
         </div>
     </div>
-
 </div>
