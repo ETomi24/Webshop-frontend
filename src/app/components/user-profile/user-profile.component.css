@@ -1,0 +1,12 @@
+.table-responsive {
+    height: 250px;
+    overflow: auto;
+}
+
+.card {
+    height: 380px;
+    margin-top: 180px;
+    margin-left: 300px;
+    margin-right: 300px;
+    padding: 10px;
+}

@@ -17,9 +17,10 @@ export class NavbarComponent implements OnInit {
     this.username = this.storageService.getUsername();
   }
 
-  logout(){
+  logout() {
     this.storageService.cleanStorage();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login']).then(() => {
+      window.location.reload();
+    });
   }
-
 }

@@ -2,7 +2,7 @@ export interface Order {
     id : number;
     totalPrice : number;
     creationDate : Date;
-    deliveryDate : Date;
+    completeDate : Date;
     status : Status;
     userId : string;
 }

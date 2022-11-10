@@ -1,6 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand">eWebshop</a>
+        <ul class="navbar-nav" *ngIf="this.username">
+            <li class="nav-item me-auto">
+                <a class="nav-link" [routerLink]="['/product-list']">Products</a>
+            </li>
+        </ul>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
             aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

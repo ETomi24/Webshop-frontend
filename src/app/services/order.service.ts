@@ -28,8 +28,8 @@ export class OrderService {
     return this.http.post(this.urlStart + "create", orderCreateRequest);
   }
 
-  update(orderUpdateRequest : OrderUpdateRequest){
-    return this.http.post(this.urlStart + "update", orderUpdateRequest);
+  update(id : number , orderUpdateRequest : OrderUpdateRequest){
+    return this.http.post(this.urlStart + "update/" + id, orderUpdateRequest);
   }
 
   complete(id : number) {

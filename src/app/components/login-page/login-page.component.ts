@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { JwtResponse } from 'src/app/models/auth/jwtResponse';
 import { LoginRequest } from 'src/app/models/auth/loginRequest';
 import { AuthService } from 'src/app/services/auth.service';
 import { OrderService } from 'src/app/services/order.service';
@@ -41,6 +40,8 @@ export class LoginPageComponent implements OnInit {
             next: data => {
               console.log(data);
               this.storageService.saveOrderId(data.id);
+              this.storageService.saveUserLoginData(jwtResponse.token.toString(), jwtResponse.username, jwtResponse.role);
+              this.router.navigate(['/product-list']);
             },
 
             error: err => {

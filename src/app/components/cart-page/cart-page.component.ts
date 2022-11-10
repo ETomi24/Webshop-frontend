@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Cart } from 'src/app/models/cart/cart';
 import { CartItem } from 'src/app/models/cart/cartItem';
 import { Order } from 'src/app/models/order/order';
+import { OrderUpdateRequest } from 'src/app/models/order/orderUpdateRequest';
 import { Product } from 'src/app/models/product/product';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
@@ -17,6 +18,7 @@ import { StorageService } from 'src/app/services/storage.service';
 export class CartPageComponent implements OnInit {
 
   order? : Order;
+  totalPrice : number = 0;
 
   carts : Cart[] = [];
   cartItems : CartItem[] = [];
@@ -77,9 +79,17 @@ export class CartPageComponent implements OnInit {
 
   completeOrder() {
     if(this.order){
-      this.orderService.complete(this.order.id).subscribe({
+      let orderUpdateRequest : OrderUpdateRequest = {
+        id : this.order.id,
+        totalPrice : this.totalPrice,
+        creationDate : this.order.creationDate,
+        completeDate : new Date(),
+        status : 1,
+        userId : this.order.userId
+      }
+      console.log(orderUpdateRequest);
+      this.orderService.update(this.order.id, orderUpdateRequest).subscribe({
         next: data =>{
-          //this.router.navigate(['/product-list']);
           let username = this.storageService.getUsername()
           this.orderService.create({userId : username}).subscribe({
             next : data => {

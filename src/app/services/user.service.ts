@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user/user';
 import { UserRegistrationRequest } from '../models/user/userRegistrationRequest';
+import { UserUpdateRequest } from '../models/user/userUpdateRequest';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,9 @@ export class UserService {
 
   get(userId : string) {
     return this.http.get<User>(this.urlStart + userId);
+  }
+
+  update(userId : string, userUpdateRequest : UserUpdateRequest) {
+    return this.http.post(this.urlStart + "update/" + userId, userUpdateRequest);
   }
 }
