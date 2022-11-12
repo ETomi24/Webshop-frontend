@@ -16,9 +16,11 @@ export class LoginPageComponent implements OnInit {
   username?: string;
   password?: string;
 
-  isLoginFailed : boolean = false;
+  isLoginFailed: boolean = false;
 
-  constructor(private storageService: StorageService, private authService: AuthService, private router : Router, private orderService : OrderService) { }
+  constructor(private storageService: StorageService, private authService: AuthService, private router: Router, private orderService: OrderService) {
+    this.storageService.cleanStorage();
+  }
 
   ngOnInit(): void {
     this.storageService.cleanStorage();
@@ -34,35 +36,44 @@ export class LoginPageComponent implements OnInit {
 
         next: data => {
           console.log(data);
-          let jwtResponse : any = data;
-          this.orderService.getInProgressOrder(jwtResponse.username).subscribe({
+          let jwtResponse: any = data;
+          this.storageService.saveUserLoginData(jwtResponse.token.toString(), jwtResponse.username, jwtResponse.role);
+          if (jwtResponse.role == "ROLE_ADMIN") {
+            this.router.navigate(['/admin-list']).then(() => {
+              window.location.reload();
+            });
+          } else {
+            this.orderService.getInProgressOrder(jwtResponse.username).subscribe({
 
-            next: data => {
-              console.log(data);
-              this.storageService.saveOrderId(data.id);
-              this.storageService.saveUserLoginData(jwtResponse.token.toString(), jwtResponse.username, jwtResponse.role);
-              this.router.navigate(['/product-list']);
-            },
+              next: data => {
+                console.log(data);
+                this.storageService.saveOrderId(data.id);
+                this.router.navigate(['/product-list']).then(() => {
+                  window.location.reload();
+                });
+              },
 
-            error: err => {
-              console.log(err)
-              this.orderService.create({userId : jwtResponse.username}).subscribe({
-                next : data => {
-                  console.log(data);
-                  this.orderService.getInProgressOrder(jwtResponse.username).subscribe({
-                    next : data => {                  
-                      console.log(data);
-                      this.storageService.saveOrderId(data.id);
-                      this.storageService.saveUserLoginData(jwtResponse.token.toString(), jwtResponse.username, jwtResponse.role);
-                      this.isLoginFailed = false;
-                      this.router.navigate(['/product-list']);
+              error: err => {
+                console.log(err)
+                this.orderService.create({ userId: jwtResponse.username }).subscribe({
+                  next: data => {
+                    console.log(data);
+                    this.orderService.getInProgressOrder(jwtResponse.username).subscribe({
+                      next: data => {
+                        console.log(data);
+                        this.storageService.saveOrderId(data.id);
+                        this.isLoginFailed = false;
+                        this.router.navigate(['/product-list']).then(() => {
+                          window.location.reload();
+                        });
+                      }
                     }
-                  }                                      
-                  )
-                }
-              })
-            }
-          })
+                    )
+                  }
+                })
+              }
+            })
+          }
         },
         error: err => {
           console.log(err);

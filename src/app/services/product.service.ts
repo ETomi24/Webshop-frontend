@@ -21,7 +21,7 @@ export class ProductService {
   }
 
   update(id? : number, productUpdateRequest? : ProductUpdateRequest) {
-    return this.http.post<string>(this.urlStart + "update/" + id, productUpdateRequest);
+    return this.http.put<string>(this.urlStart + "update/" + id, productUpdateRequest);
   }
 
   get(id: number) {

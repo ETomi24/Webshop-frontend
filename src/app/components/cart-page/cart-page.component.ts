@@ -36,6 +36,9 @@ export class CartPageComponent implements OnInit {
       next: data =>{
         this.order = data;
         this.getAllCartItem();
+      },
+      error : err=>{
+        console.log(err);
       }
     });
   }

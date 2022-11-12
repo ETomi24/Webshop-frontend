@@ -11,20 +11,85 @@ import { ProductEditComponent } from './components/product-edit/product-edit.com
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { RegistrationPageComponent } from './components/registration-page/registration-page.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
-  { path: 'admin-list', component: AdminListPageComponent },
-  { path: 'product-edit/:id', component: ProductEditComponent },
-  { path: 'product-create', component: ProductCreateComponent },
-  { path: 'category-edit/:id', component: CategoryEditComponent},
-  { path: 'category-create', component: CategoryCreateComponent},
-  { path: 'cart', component: CartPageComponent },
-  { path: 'product-detail/:id', component: ProductDetailComponent},
-  { path: 'product-list', component: ProductListComponent },
-  { path: 'login', component: LoginPageComponent },
-  { path: 'registration', component: RegistrationPageComponent },
-  { path: 'profile' , component: UserProfileComponent},
-  { path: '', component: LoginPageComponent}
+  {
+    path: 'admin-list', component: AdminListPageComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_ADMIN'
+    }
+  },
+  {
+    path: 'product-edit/:id', component: ProductEditComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_ADMIN'
+    }
+  },
+  {
+    path: 'product-create', component: ProductCreateComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_ADMIN'
+    }
+  },
+  {
+    path: 'category-edit/:id', component: CategoryEditComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_ADMIN'
+    }
+  },
+  {
+    path: 'category-create', component: CategoryCreateComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_ADMIN'
+    }
+  },
+  {
+    path: 'cart', component: CartPageComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_CUSTOMER'
+    }
+  },
+  {
+    path: 'product-detail/:id', component: ProductDetailComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_CUSTOMER'
+    }
+  },
+  {
+    path: 'product-list', component: ProductListComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_CUSTOMER'
+    }
+  },
+  {
+    path: 'registration', component: RegistrationPageComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_CUSTOMER'
+    }
+  },
+  {
+    path: 'profile', component: UserProfileComponent,
+    canActivate: [AuthGuard],
+    data: {
+      role: 'ROLE_CUSTOMER'
+    }
+  },
+  {
+    path: 'login', component: LoginPageComponent,
+  },
+  {
+    path: '', component: LoginPageComponent
+  }
 ];
 
 @NgModule({

@@ -30,6 +30,10 @@ export class StorageService {
     return localStorage.getItem("username")
   }
 
+  getRole() : any{
+    return localStorage.getItem("role");
+  }
+
   getToken() : any{
     return localStorage.getItem("token");
   }

@@ -29,6 +29,6 @@ export class CategoryService {
   }
 
   update(id? : number, categoryUpdateRequest? : CategoryUpdateRequest) {
-    return this.http.post<string>(this.urlStart + "update/" + id, categoryUpdateRequest);
+    return this.http.put<string>(this.urlStart + "update/" + id, categoryUpdateRequest);
   }
 }

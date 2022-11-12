@@ -29,11 +29,11 @@ export class OrderService {
   }
 
   update(id : number , orderUpdateRequest : OrderUpdateRequest){
-    return this.http.post(this.urlStart + "update/" + id, orderUpdateRequest);
+    return this.http.put(this.urlStart + "update/" + id, orderUpdateRequest);
   }
 
   complete(id : number) {
-    return this.http.post(this.urlStart + "complete/" + id, {});
+    return this.http.patch(this.urlStart + "complete/" + id, {});
   }
 
 

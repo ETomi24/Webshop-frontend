@@ -20,7 +20,7 @@ export class AuthInterceptor implements HttpInterceptor {
         headers: request.headers.set("Authorization",
           "Bearer " + token)
       });
-      console.log("HELLO" + cloned);
+      console.log("HELLO123" + cloned);
 
       return next.handle(cloned);
     }

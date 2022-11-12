@@ -21,6 +21,6 @@ export class UserService {
   }
 
   update(userId : string, userUpdateRequest : UserUpdateRequest) {
-    return this.http.post(this.urlStart + "update/" + userId, userUpdateRequest);
+    return this.http.patch(this.urlStart + "update/" + userId, userUpdateRequest);
   }
 }
