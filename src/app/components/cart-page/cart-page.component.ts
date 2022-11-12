@@ -53,6 +53,7 @@ export class CartPageComponent implements OnInit {
             }
             console.log(cartItem);
             this.cartItems.push(cartItem);
+            this.totalPrice += this.getCartItemTotalPrice(cartItem);
           })
         });
       });
@@ -73,7 +74,7 @@ export class CartPageComponent implements OnInit {
     if(cartItem.product.price){
       return cartItem.quantity * cartItem.product.price;
     } else {
-      return undefined;
+      return 0;
     }
   }
 
