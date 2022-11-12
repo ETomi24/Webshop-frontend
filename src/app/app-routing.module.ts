@@ -72,10 +72,6 @@ const routes: Routes = [
   },
   {
     path: 'registration', component: RegistrationPageComponent,
-    canActivate: [AuthGuard],
-    data: {
-      role: 'ROLE_CUSTOMER'
-    }
   },
   {
     path: 'profile', component: UserProfileComponent,
