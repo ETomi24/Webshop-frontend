@@ -21,10 +21,11 @@ export class CategoryCreateComponent implements OnInit {
     this.categoryCreateRequest = {
       name : this.name
     }
-    this.categoryService.create(this.categoryCreateRequest).subscribe(res => {
-        console.log(res);
+    this.categoryService.create(this.categoryCreateRequest).subscribe({
+      next: data => {
+        this.navigateBack();
+      }
     })
-    this.navigateBack();
   }
 
   navigateBack() {

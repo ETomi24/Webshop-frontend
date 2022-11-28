@@ -44,8 +44,11 @@ export class CategoryEditComponent implements OnInit {
       id: this.id,
       name: this.name
     }
-    this.categoryService.update(this.id, this.categoryUpdateRequest).subscribe(res => console.log(res));
-    this.navigateBack();
+    this.categoryService.update(this.id, this.categoryUpdateRequest).subscribe({
+      next: data => {
+        this.navigateBack();
+      }
+    })
   }
 
   navigateBack() {

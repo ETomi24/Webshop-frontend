@@ -70,8 +70,11 @@ export class ProductEditComponent implements OnInit {
       picture: this.base64Data
     }
     console.log(this.productUpdateRequest)
-    this.productService.update(this.id, this.productUpdateRequest).subscribe(res => console.log(res))
-    this.navigateBack();
+    this.productService.update(this.id, this.productUpdateRequest).subscribe({
+      next: data => {
+        this.navigateBack();
+      }
+    })
   }
 
 

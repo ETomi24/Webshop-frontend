@@ -44,8 +44,11 @@ export class ProductCreateComponent implements OnInit {
       picture: this.base64Data
     }
     console.log(this.productCreateRequest)
-    this.productService.create(this.productCreateRequest).subscribe(res => console.log(res))
-    this.navigateBack();
+    this.productService.create(this.productCreateRequest).subscribe({
+      next: data => {
+        this.navigateBack();
+      }
+    })
   }
 
   public onFileChanged(event: any) {
