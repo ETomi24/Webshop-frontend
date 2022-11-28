@@ -16,6 +16,8 @@ export class CategoryEditComponent implements OnInit {
   name?: string;
   id? : number;
 
+  isFailed : boolean = false;
+
   constructor(private categoryService : CategoryService, private route: ActivatedRoute, private router : Router) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () { return false; };
   }
@@ -40,15 +42,23 @@ export class CategoryEditComponent implements OnInit {
   }
 
   updateCategory() {
-    this.categoryUpdateRequest = {
-      id: this.id,
-      name: this.name
-    }
-    this.categoryService.update(this.id, this.categoryUpdateRequest).subscribe({
-      next: data => {
-        this.navigateBack();
+    if(this.name){
+      this.categoryUpdateRequest = {
+        id: this.id,
+        name: this.name
       }
-    })
+      this.categoryService.update(this.id, this.categoryUpdateRequest).subscribe({
+        next: data => {
+          this.isFailed = false;
+          this.navigateBack();
+        },
+        error: err => {
+          this.isFailed = true;
+        }
+      })
+    } else {
+      this.isFailed = true;
+    }
   }
 
   navigateBack() {

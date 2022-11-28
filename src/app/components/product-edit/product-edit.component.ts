@@ -27,6 +27,8 @@ export class ProductEditComponent implements OnInit {
   base64Data: any;
   selectedFile?: File;
 
+  isFailed : boolean = false;
+
   constructor(private productService: ProductService, private categoryService: CategoryService, private route: ActivatedRoute, private router: Router) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () { return false; };
   }
@@ -60,21 +62,30 @@ export class ProductEditComponent implements OnInit {
   }
 
   updateProduct() {
-    this.productUpdateRequest = {
-      id: this.id,
-      description: this.description,
-      price: this.price,
-      quantity: this.quantity,
-      name: this.name,
-      category: this.category,
-      picture: this.base64Data
-    }
-    console.log(this.productUpdateRequest)
-    this.productService.update(this.id, this.productUpdateRequest).subscribe({
-      next: data => {
-        this.navigateBack();
+    if(this.description && this.price && this.quantity && this.name && this.category && this.base64Data){
+      this.productUpdateRequest = {
+        id: this.id,
+        description: this.description,
+        price: this.price,
+        quantity: this.quantity,
+        name: this.name,
+        category: this.category,
+        picture: this.base64Data
       }
-    })
+      console.log(this.productUpdateRequest)
+      this.productService.update(this.id, this.productUpdateRequest).subscribe({
+        next: data => {
+          this.isFailed = false;
+          this.navigateBack();
+        },
+        error: err => {
+          this.isFailed = true;
+        }
+      })
+    } else {
+      this.isFailed = true;
+    }
+
   }
 
 

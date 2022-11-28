@@ -13,7 +13,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductCreateComponent implements OnInit {
 
   productCreateRequest: ProductCreateRequest | undefined;
-  categories : Category[] = [];
+  categories: Category[] = [];
 
   description?: string;
   price?: number;
@@ -24,7 +24,9 @@ export class ProductCreateComponent implements OnInit {
   base64Data: any;
   selectedFile?: File;
 
-  constructor(private productService: ProductService, private categoryService : CategoryService, private router : Router) { }
+  isFailed: boolean = false;
+
+  constructor(private productService: ProductService, private categoryService: CategoryService, private router: Router) { }
 
   ngOnInit(): void {
     this.getCategories();
@@ -35,25 +37,34 @@ export class ProductCreateComponent implements OnInit {
   }
 
   createProduct() {
-    this.productCreateRequest = {
-      description: this.description,
-      price: this.price,
-      quantity: this.quantity,
-      name: this.name,
-      category: this.category,
-      picture: this.base64Data
-    }
-    console.log(this.productCreateRequest)
-    this.productService.create(this.productCreateRequest).subscribe({
-      next: data => {
-        this.navigateBack();
+    if (this.description && this.price && this.quantity && this.name && this.category && this.base64Data) {
+      this.productCreateRequest = {
+        description: this.description,
+        price: this.price,
+        quantity: this.quantity,
+        name: this.name,
+        category: this.category,
+        picture: this.base64Data
       }
-    })
+      console.log(this.productCreateRequest)
+      this.productService.create(this.productCreateRequest).subscribe({
+        next: data => {
+          this.isFailed = false;
+          this.navigateBack();
+        },
+        error: err => {
+          this.isFailed = true;
+        }
+      })
+    } else {
+      this.isFailed = true;
+    }
+
   }
 
   public onFileChanged(event: any) {
     this.selectedFile = event.target.files[0];
-    if(this.selectedFile) {
+    if (this.selectedFile) {
       const reader = new FileReader();
 
       reader.onload = (e: any) => {
@@ -66,7 +77,7 @@ export class ProductCreateComponent implements OnInit {
 
   navigateBack() {
     this.router.navigate(['/admin-list']).then(() => {
-    window.location.reload();
-  });
+      window.location.reload();
+    });
   }
 }

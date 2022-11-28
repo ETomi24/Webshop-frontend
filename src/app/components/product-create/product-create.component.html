@@ -49,6 +49,11 @@
                     </div>
                 </div>
                 <div class="row mt-4 ms-2">
+
+                    <div *ngIf="isFailed" class="alert alert-danger mt-1" role="alert">
+                        Error occured - Please fill every value
+                    </div>
+
                     <button type="submit" class="btn btn-primary" (click)="createProduct()">Create</button>
                     <button class="btn btn-secondary mt-1" (click)="navigateBack()">Cancel</button>
                 </div>

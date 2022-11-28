@@ -12,20 +12,31 @@ export class CategoryCreateComponent implements OnInit {
   categoryCreateRequest? : CategoryCreateRequest;
   name?: string;
 
+  isFailed : boolean = false;
+
   constructor(private categoryService : CategoryService, private router : Router) { }
 
   ngOnInit(): void {
   }
 
   createCategory() {
-    this.categoryCreateRequest = {
-      name : this.name
-    }
-    this.categoryService.create(this.categoryCreateRequest).subscribe({
-      next: data => {
-        this.navigateBack();
+    if(this.name){
+      this.categoryCreateRequest = {
+        name : this.name
       }
-    })
+      this.categoryService.create(this.categoryCreateRequest).subscribe({
+        next: data => {
+          this.isFailed = false;
+          this.navigateBack();
+        },
+        error: err => {
+          this.isFailed = true;
+        }
+      })
+    } else {
+      this.isFailed = true;
+    }
+
   }
 
   navigateBack() {
