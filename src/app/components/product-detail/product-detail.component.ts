@@ -11,11 +11,11 @@ import { StorageService } from 'src/app/services/storage.service';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-  product? : Product;
-  quantity : number = 0;
+  product?: Product;
+  quantity: number = 0;
 
-  constructor(private productService: ProductService,private cartService : CartService, private route: ActivatedRoute, private router: Router,
-    private storageService : StorageService) { }
+  constructor(private productService: ProductService, private cartService: CartService, private route: ActivatedRoute, private router: Router,
+    private storageService: StorageService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -32,8 +32,8 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
-  getImage() : any {
-    if(this.product?.picture) {
+  getImage(): any {
+    if (this.product?.picture) {
       return 'data:image/jpeg;base64,' + this.product.picture;
     } else {
       return 'https://via.placeholder.com/550x450';
@@ -41,22 +41,25 @@ export class ProductDetailComponent implements OnInit {
   }
 
   putInCart() {
-    if(this.product?.quantity && this.product?.price && this.product?.id){
-      if(this.quantity >= 0 && this.quantity <= this.product?.quantity) {
+    if (this.product?.quantity && this.product?.price && this.product?.id) {
+      if (this.quantity >= 0 && this.quantity <= this.product?.quantity) {
         let orderId = this.storageService.getOrderId();
-        this.cartService.addToCart(this.product.id, Number(orderId), this.quantity).subscribe(
-          res => {
-            console.log(res);
+        this.cartService.addToCart(this.product.id, Number(orderId), this.quantity).subscribe({
+          next: data => {
+            console.log(data);
+            window.location.reload();
+          },
+          error: err => {
+            console.log(err)
           }
-        );
-        window.location.reload();
+        })
       }
     }
   }
 
-  totalPrice() : any {
-    if(this.product?.quantity && this.product?.price){
-      if(this.quantity >= 0 && this.quantity <= this.product?.quantity) {
+  totalPrice(): any {
+    if (this.product?.quantity && this.product?.price) {
+      if (this.quantity >= 0 && this.quantity <= this.product?.quantity) {
         return this.quantity * this.product.price;
       }
     }
