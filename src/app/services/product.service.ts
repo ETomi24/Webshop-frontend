@@ -8,27 +8,27 @@ import { ProductUpdateRequest } from '../models/product/productUpdateRequest';
   providedIn: 'root'
 })
 export class ProductService {
-  private urlStart = "http://localhost:8085/api/products/";
+  private urlStart = "http://localhost:8085/api/products";
 
   constructor(private http: HttpClient) { }
 
   getAll() {
-    return this.http.get<Product[]>(this.urlStart + "all");
+    return this.http.get<Product[]>(this.urlStart);
   }
 
   create(productCreateRequest: ProductCreateRequest) {
-    return this.http.post<string>(this.urlStart + "create", productCreateRequest);
+    return this.http.post<string>(this.urlStart, productCreateRequest);
   }
 
   update(id? : number, productUpdateRequest? : ProductUpdateRequest) {
-    return this.http.put<string>(this.urlStart + "update/" + id, productUpdateRequest);
+    return this.http.put<string>(this.urlStart + "/" + id, productUpdateRequest);
   }
 
   get(id: number) {
-    return this.http.get<Product>(this.urlStart + id);
+    return this.http.get<Product>(this.urlStart + "/" + id);
   }
 
   delete(id : number) {
-    return this.http.delete<string>(this.urlStart + "delete/" + id)
+    return this.http.delete<string>(this.urlStart + "/" + id)
   }
 }

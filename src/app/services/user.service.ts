@@ -8,19 +8,19 @@ import { UserUpdateRequest } from '../models/user/userUpdateRequest';
   providedIn: 'root'
 })
 export class UserService {
-  private urlStart = "http://localhost:8085/api/users/";
+  private urlStart = "http://localhost:8085/api/users";
 
   constructor(private http : HttpClient) { }
 
   register(userRegistrationRequest : UserRegistrationRequest) {
-    return this.http.post(this.urlStart + "register", userRegistrationRequest);
+    return this.http.post(this.urlStart + "/register", userRegistrationRequest);
   }
 
   get(userId : string) {
-    return this.http.get<User>(this.urlStart + userId);
+    return this.http.get<User>(this.urlStart + "/" + userId);
   }
 
   update(userId : string, userUpdateRequest : UserUpdateRequest) {
-    return this.http.patch(this.urlStart + "update/" + userId, userUpdateRequest);
+    return this.http.patch(this.urlStart + "/" + userId, userUpdateRequest);
   }
 }

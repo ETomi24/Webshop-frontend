@@ -6,19 +6,19 @@ import { Cart } from '../models/cart/cart';
   providedIn: 'root'
 })
 export class CartService {
-  private urlStart = "http://localhost:8085/api/carts/";
+  private urlStart = "http://localhost:8085/api/carts";
 
   constructor(private http : HttpClient) { }
 
   getAll(orderId : number) {
-    return this.http.get<Cart[]>(this.urlStart + "all/" + orderId);
+    return this.http.get<Cart[]>(this.urlStart + "/" + orderId);
   }
 
   addToCart(productId : number, orderId : number, amount : number) {
-    return this.http.post(this.urlStart + "add/" + orderId + "/" + productId, amount);
+    return this.http.post(this.urlStart + "/add/" + orderId + "/" + productId, amount);
   }
 
   removeFromCart(productId : number, orderId : number, amount : number) {
-    return this.http.post(this.urlStart + "remove/" + orderId + "/" + productId, amount);
+    return this.http.post(this.urlStart + "/remove/" + orderId + "/" + productId, amount);
   }
 }
