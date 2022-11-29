@@ -17,6 +17,9 @@ export class RegistrationPageComponent implements OnInit {
 
   userRegistrationRequest? : UserRegistrationRequest;
 
+  isFailed : boolean = false;
+  errorMessage?: string;
+
   constructor(private userService : UserService, private router : Router) { }
 
   ngOnInit(): void {
@@ -32,12 +35,20 @@ export class RegistrationPageComponent implements OnInit {
         email : this.email,
         role : 0
       };
-      this.userService.register(this.userRegistrationRequest).subscribe(res => {
-        console.log(res);
-        this.router.navigate(['/login']);
+      this.userService.register(this.userRegistrationRequest).subscribe({
+        next: data => {
+          console.log(data);
+          this.router.navigate(['/login']);
+          this.errorMessage = "";
+          this.isFailed = false;
+        },
+        error: err =>{
+          this.errorMessage = "This user is already existing"
+        }       
       })
+    } else {
+      this.isFailed = true;
+      this.errorMessage = "Please fill every value"
     }
-
   }
-
 }

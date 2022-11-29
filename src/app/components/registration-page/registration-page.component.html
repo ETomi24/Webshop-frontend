@@ -37,6 +37,11 @@
                         </div>
                     </div>
                     <div class="mx-auto mt-4">
+
+                        <div *ngIf="isFailed" class="alert alert-danger mt-1" role="alert">
+                            {{errorMessage}}
+                        </div>
+
                         <button type="submit" class="btn btn-primary btn-block w-100" (click)="register()">Registration</button>
                     </div>
                 </div>
