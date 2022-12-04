@@ -1,6 +1,6 @@
 <div class = "background">
     <div class="row">
-        <div class = "card w-25 panel">
+        <div class = "card panel">
             <div class="card-header text-center">
                 Login
             </div>
@@ -18,10 +18,13 @@
                             <input type="password" class="form-control" id="password" [(ngModel)]="password" name="password">
                         </div>
                     </div>
-                    <div *ngIf="isLoginFailed" class="alert alert-danger mt-1" role="alert">
-                        Login failed
-                    </div>
+                    
                     <div class="mx-auto mt-4">
+
+                        <div *ngIf="isLoginFailed" class="alert alert-danger" role="alert">
+                            Login failed
+                        </div>
+
                         <button type="submit" class="btn btn-primary btn-block w-100" (click)="login()">Login</button>
                         <a [routerLink]="['/registration']">Don't have an account - Register</a>
                     </div>

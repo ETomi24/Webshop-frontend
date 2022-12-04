@@ -80,6 +80,8 @@ export class LoginPageComponent implements OnInit {
           this.isLoginFailed = true;
         }
       });
+    } else {
+      this.isLoginFailed = true;
     }
   }
 
