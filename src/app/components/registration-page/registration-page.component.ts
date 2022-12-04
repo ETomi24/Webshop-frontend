@@ -43,7 +43,8 @@ export class RegistrationPageComponent implements OnInit {
           this.isFailed = false;
         },
         error: err =>{
-          this.errorMessage = "This user is already existing"
+          this.errorMessage = "This user is already existing";
+          this.isFailed = true;
         }       
       })
     } else {
